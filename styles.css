@@ -133,4 +133,17 @@ footer {
 	flex: .5;
 }
 
+#test {
+	border: 5px solid green;
+}
 
+ul {
+	padding-left: 40px;
+}
+
+.content {
+	padding: 10vh;
+	border: 5px solid green;
+	width: 90%;
+	margin: auto;
+}
