@@ -31,7 +31,13 @@ body{
 	flex-direction: column;
 	background-color: #261447;
 }
+#chat-window{
+	position: absolute;
+	z-index: 2;
+	background-color: #261447;
+	right: 1000px;
 
+}
 main{
 	display: flex;
 	width: 100%;
@@ -126,6 +132,9 @@ header {
 
 	flex-shrink: 0;
 }
+#guestToggle{
+
+}
 
 .page-link{
 	border: 3px solid #f6019d;
@@ -161,9 +170,35 @@ header {
 	margin: 15px auto;
 }
 
+#shelf{
+	height: 1200px;
+	width: 100%;
+	
+}
+#andriod{
+	position: relative;
+	height: 150px;
+	width: auto;
+	bottom: 970px;
+	right: 250px;
+	z-index: 1;
+}
+
+#darkCityPoster{
+	position: relative;
+	height: 243px;
+	width: auto;
+	bottom: 1473px;
+	right: 422px;
+	z-index: 1;
+}
+
+
+
 .blog p{
 	font-family: 'Courier New', monospace; 
 }
+
 
 .keyring {
 	display: flex;
@@ -202,3 +237,4 @@ ul {
 	margin: auto;
 	color: #ff6c11;
 }
+

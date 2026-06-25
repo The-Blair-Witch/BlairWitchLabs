@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<link href="guestbook/shapes.css" rel="stylesheet" />
+</head>
+
+<body>
+	<form id="app">
+		<div id="title">
+			<h2>Guest Book</h2>
+			<h3>Thanks for visiting!</h3>
+		</div>
+		<div id="entries">
+			<template id="comment-template">
+				<div class="comment-card">
+					<div class="first-line">
+						<span class="comment-name"></span>
+						<span class="comment-date"></span>
+					</div>
+					<p class="comment-body"></p>
+				</div>
+			</template>
+		</div>
+		<!--<div id="captcha">
+			<div id="math">
+				<span id="num1"></span>
+				<p>+</p>
+				<span id="num2"></span>
+				<p>=</p>
+			</div>
+			<input type="text" name="addition" placeholder="enter solution" id="solution">
+		</div>-->
+		<div id="new-comment">
+			<div id="left-ui">
+				<select name="color" id="color">
+					<option value="green" id="green" class="color-option">
+						Green
+					</option>
+					<option value="blue" id="blue" class="color-option">
+						Blue
+					</option>
+					<option value="red" id="red" class="color-option">
+						Red
+					</option>
+				</select>
+				<input type="text" name="username" placeholder="name" id="name">
+			</div>
+			<input type="text" name="commentinput" placeholder="enter comment" id="comment">
+			<button type="submit" id="submit">Send</button>
+		</div>
+	</form>
+	<!--<script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>--!>
+
+	<!--<script src="guestbook/trigger.js"></script>--!>
+
+</body>
+
+
+</html>

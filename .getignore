@@ -1,0 +1,16 @@
+earlyVersion
+old.html
+erm.py
+backup.py
+
+
+# SQLite databases
+*.db
+*.sqlite
+*.sqlite3
+
+# SQLite temporary runtime files
+*.db-journal
+*.db-shm
+*.db-wal
+

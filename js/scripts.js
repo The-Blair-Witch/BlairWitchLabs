@@ -1,5 +1,7 @@
 let toggle = false;
 
+/* turn into list or dictonary? */
+/*side nav*/
 let homeButton = document.getElementById("home");
 let bookButton = document.getElementById("book-reviews");
 let movieButton = document.getElementById("movie-reviews");
@@ -10,13 +12,14 @@ let musicButton = document.getElementById("music");
 let photoButton = document.getElementById("photography");
 let codeButton = document.getElementById("programing");
 let collectButton = document.getElementById("collecting");
-
+/*footer*/
 let archiveButton = document.getElementById("archive");
 let legalButton = document.getElementById("legal");
 let contactButton = document.getElementById("contact");
 
 /*refactor this to find a better way to store and attach list of post to make quicker to append*/
 
+/*side nav fetch*/
 fetch("blog.html")
 	.then(response => response.text())
 	.then(data => {
@@ -30,6 +33,27 @@ fetch("blog.html")
 	.catch(error => {
 		console.error("Error loading the file:", error)
 	})
+
+const guestToggle = document.getElementById("guestToggle");
+guestToggle.addEventListener('click', async (e) => {
+	e.preventDefault();
+
+	if (toggle == false) {
+		const response = await fetch("guestbook/guestbook.html");
+		const guestbook = await response.text();
+		document.getElementById("chat-window").innerHTML = guestbook;
+
+		if (typeof initGuestbook === "function") {
+			initGuestbook();
+		}
+
+		toggle = true;
+	}
+	else {
+		document.getElementById("chat-window").innerHTML = "";
+		toggle = false;
+	}
+});
 
 
 
@@ -50,7 +74,7 @@ homeButton.addEventListener("click", function() {
 });
 
 bookButton.addEventListener("click", function() {
-	fetch("construction.html")
+	fetch("books.html")
 		.then(response => response.text())
 		.then(data => {
 			document.getElementById("window").querySelector("div").innerHTML = data;
@@ -62,7 +86,7 @@ bookButton.addEventListener("click", function() {
 });
 
 movieButton.addEventListener("click", function() {
-	fetch("construction.html")
+	fetch("movies.html")
 		.then(response => response.text())
 		.then(data => {
 			document.getElementById("window").querySelector("div").innerHTML = data;
@@ -157,6 +181,7 @@ collectButton.addEventListener("click", function() {
 
 });
 
+/*footer fetch */
 archiveButton.addEventListener("click", function() {
 	fetch("construction.html")
 		.then(response => response.text())
@@ -192,6 +217,30 @@ contactButton.addEventListener("click", function() {
 		})
 
 });
+
+function fetchAndriod() {
+	fetch("andriod.html")
+		.then(response => response.text())
+		.then(data => {
+			document.getElementById("window").querySelector("div").innerHTML = data;
+		})
+		.catch(error => {
+			console.error("Error loading the file:", error)
+		})
+}
+
+function fetchDarkCity() {
+	fetch("darkcity.html")
+		.then(response => response.text())
+		.then(data => {
+			document.getElementById("window").querySelector("div").innerHTML = data;
+		})
+		.catch(error => {
+			console.error("Error loading the file:", error)
+		})
+}
+
+
 
 
 

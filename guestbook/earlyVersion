@@ -1,0 +1,86 @@
+async function getComments() {
+	try {
+		const response = await fetch("http://127.0.0.1:5000/get-comments");
+		const comments = await response.json();
+
+		const entries = document.getElementById("entries");
+		const template = document.getElementById("comment-template");
+
+		entries.querySelectorAll('.comment-card').forEach(card => card.remove());
+
+		comments.forEach(item => {
+			const clone = template.content.cloneNode(true);
+
+			const cardSelect = clone.querySelector(".comment-card");
+			const nameSelect = clone.querySelector(".comment-name");
+			const dateSelect = clone.querySelector(".comment-date");
+			const bodySelect = clone.querySelector(".comment-body");
+
+			cardSelect.style.borderLeft = `5px solid ${item.color}`;
+
+			nameSelect.textContent = item.name;
+			nameSelect.style.color = item.color;
+			dateSelect.textContent = item.date.slice(0, 16);
+			bodySelect.textContent = item.comment;
+
+			entries.appendChild(clone);
+
+		});
+	}
+	catch (error) {
+		console.error("Error loading guestbook comments:", error);
+	}
+}
+
+
+async function getNum() {
+	try {
+		const response = await fetch("http://127.0.0.1:5000/get-captcha")
+		const data = await response.json();
+		document.getElementById("num1").textContent = data.num1;
+		document.getElementById("num2").textContent = data.num2;
+
+	}
+	catch (error) {
+		console.error("error fetching captcha numbers", error);
+	}
+}
+
+submitComment = document.getElementById("app");
+
+submitComment.addEventListener('submit', async (e) => {
+	e.preventDefault();
+
+	const payload = {
+		name: document.getElementById("name").value,
+		comment: document.getElementById("comment").value,
+		//		num1: parseInt(document.getElementById("num1").textContent),
+		//		num2: parseInt(document.getElementById("num2").textContent),
+		//captcha_answer: parseInt(document.getElementById("solution").value),
+		color: document.getElementById("color").value
+
+	};
+
+	try {
+		const response = await fetch('http://127.0.0.1:5000/', {
+			method: 'POST',
+			headers: { 'content-Type': 'application/json' },
+			body: JSON.stringify(payload)
+		});
+
+		const result = await response.json();
+		alert(result.message);
+
+		if (result.status === "success") {
+			document.getElementById('app').reset();
+			//	getNum();
+		}
+	}
+	catch (error) {
+		alert("could not reach guestbook data");
+	}
+});
+
+//getNum();
+setInterval(getComments, 3000);
+
